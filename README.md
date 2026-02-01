@@ -34,13 +34,15 @@ A Shiny dashboard application that provides an interactive chat interface for La
 # Install required packages
 install.packages(c("shiny", "bslib", "dplyr", "purrr"))
 
-# Install ellmer for LLM integration
-# Check the ellmer package documentation for installation instructions
-# The app includes a mock implementation for testing without ellmer
-install.packages("ellmer")
+# For ellmer LLM integration:
+# The ellmer package provides the LLM interface functionality.
+# If not available, the app will use a mock implementation for testing.
+# Check the ellmer package repository for actual installation instructions:
+# - GitHub: https://github.com/hadley/ellmer (or appropriate repository)
+# - CRAN: install.packages("ellmer")  # if available
 ```
 
-**Note**: The application includes a mock implementation of ellmer (`ellmer_mock.R`) that allows you to test the interface without the actual ellmer package. When ellmer is not available, the app will automatically use the mock version and display placeholder responses. For production use with real LLMs, install the actual ellmer package and configure your API keys.
+**Note**: The application includes a mock implementation of ellmer (`ellmer_mock.R`) that allows you to test the interface without the actual ellmer package. When ellmer is not available, the app will automatically use the mock version and display placeholder responses. For production use with real LLMs, you must install the actual ellmer package and configure your API keys.
 
 ## Configuration
 

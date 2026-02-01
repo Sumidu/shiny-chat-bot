@@ -160,14 +160,6 @@ server <- function(input, output, session) {
     user_message <- input$user_input
     updateTextInput(session, "user_input", value = "")
     
-    # Add user message to current chat
-    current_chat <- chat_state$chats[[chat_state$current_chat_id]]
-    current_chat$messages <- append(
-      current_chat$messages,
-      list(list(role = "user", content = user_message))
-    )
-    chat_state$chats[[chat_state$current_chat_id]] <- current_chat
-    
     # Get LLM response
     tryCatch({
       if (is.null(llm_chat())) {
@@ -180,8 +172,12 @@ server <- function(input, output, session) {
       
       assistant_message <- response$messages[[length(response$messages)]]$content
       
-      # Add assistant response to current chat
+      # Add user message to current chat
       current_chat <- chat_state$chats[[chat_state$current_chat_id]]
+      current_chat$messages <- append(
+        current_chat$messages,
+        list(list(role = "user", content = user_message))
+      )
       current_chat$messages <- append(
         current_chat$messages,
         list(list(role = "assistant", content = assistant_message))
@@ -353,13 +349,15 @@ server <- function(input, output, session) {
     )
     
     # Reinitialize LLM chat with new prompt
+    # Note: This resets the LLM context. Previous messages in chat_state are preserved,
+    # but the LLM will start fresh with the new prompt for subsequent messages.
     if (!is.null(chat_state$current_chat_id)) {
       tryCatch({
         llm_chat(chat(system_prompt = chat_state$system_prompt))
         showNotification(
-          "System prompt updated successfully!",
+          "System prompt updated! Note: LLM context reset. Previous messages preserved in history.",
           type = "message",
-          duration = 2
+          duration = 3
         )
       }, error = function(e) {
         showNotification(
