@@ -200,17 +200,6 @@ server <- function(input, output, session) {
     })
   })
   
-  # Allow sending with Enter key
-  observe({
-    shinyjs::runjs('
-      $(document).on("keypress", "#user_input", function(e) {
-        if(e.which == 13) {
-          $("#send_message").click();
-        }
-      });
-    ')
-  }) %>% bindEvent(once = TRUE)
-  
   # Render chat messages
   output$chat_messages <- renderUI({
     req(chat_state$current_chat_id)
