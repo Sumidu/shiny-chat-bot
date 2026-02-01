@@ -1,0 +1,22 @@
+Package: shinychatbot
+Title: Shiny Chat Bot with LLM Integration
+Version: 0.1.0
+Authors@R: person("Author", "Name", email = "author@example.com", role = c("aut", "cre"))
+Description: A Shiny dashboard application that provides a chat interface 
+    for interacting with Large Language Models (LLMs) using the ellmer package.
+    Features include system prompt customization, chat history management,
+    and the ability to fork conversations at any point.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 4.0.0)
+Imports:
+    shiny (>= 1.7.0),
+    bslib (>= 0.5.0),
+    ellmer,
+    dplyr,
+    purrr
+Suggests:
+    testthat (>= 3.0.0)
+RoxygenNote: 7.2.3
