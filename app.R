@@ -4,7 +4,15 @@
 
 library(shiny)
 library(bslib)
-library(ellmer)
+
+# Try to load ellmer, use mock if not available
+if (!requireNamespace("ellmer", quietly = TRUE)) {
+  message("ellmer package not found, using mock implementation for testing")
+  source("ellmer_mock.R")
+} else {
+  library(ellmer)
+}
+
 library(dplyr)
 library(purrr)
 

@@ -24,7 +24,7 @@ A Shiny dashboard application that provides an interactive chat interface for La
 2. Required R packages:
    - shiny
    - bslib
-   - ellmer
+   - ellmer (for actual LLM integration)
    - dplyr
    - purrr
 
@@ -34,10 +34,13 @@ A Shiny dashboard application that provides an interactive chat interface for La
 # Install required packages
 install.packages(c("shiny", "bslib", "dplyr", "purrr"))
 
-# Install ellmer (if not already installed)
-# Follow instructions from the ellmer package documentation
+# Install ellmer for LLM integration
+# Check the ellmer package documentation for installation instructions
+# The app includes a mock implementation for testing without ellmer
 install.packages("ellmer")
 ```
+
+**Note**: The application includes a mock implementation of ellmer (`ellmer_mock.R`) that allows you to test the interface without the actual ellmer package. When ellmer is not available, the app will automatically use the mock version and display placeholder responses. For production use with real LLMs, install the actual ellmer package and configure your API keys.
 
 ## Configuration
 
