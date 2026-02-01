@@ -1,0 +1,25 @@
+# Sample .Rprofile configuration for the Shiny Chat Bot
+# Copy this file to your home directory or project directory as .Rprofile
+# and configure with your own API keys
+
+# Configure the LLM provider
+# Supported providers: "openai", "anthropic", "ollama", etc.
+# options(ellmer_provider = "openai")
+
+# Set your API key (choose the appropriate one for your provider)
+# Sys.setenv(OPENAI_API_KEY = "your-openai-api-key-here")
+# Sys.setenv(ANTHROPIC_API_KEY = "your-anthropic-api-key-here")
+
+# For local models using Ollama (no API key needed)
+# options(ellmer_provider = "ollama")
+# options(ellmer_model = "llama2")
+
+# Example configuration for OpenAI:
+# options(ellmer_provider = "openai")
+# options(ellmer_model = "gpt-3.5-turbo")
+# Sys.setenv(OPENAI_API_KEY = "sk-...")
+
+# Example configuration for Anthropic:
+# options(ellmer_provider = "anthropic")
+# options(ellmer_model = "claude-3-sonnet-20240229")
+# Sys.setenv(ANTHROPIC_API_KEY = "sk-ant-...")
